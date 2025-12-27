@@ -1,0 +1,65 @@
+<!doctype html> 
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Монгол гэр</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Зүүн меню -->
+    <aside class="left-col">
+      <div class="logo">Монгол гэр</div>
+      <button id="collapseBtn" class="collapse-btn">⮜</button>
+      
+
+      <nav class="menu">
+        <a href="index.html" class="menu-btn active">Үндсэн нүүр</a>
+        <a href="gerbarih.html" class="menu-btn">Гэр барих</a>
+        <a href="medeelel.html" class="menu-btn">Мэдээлэл</a>
+        <a href="togloom.html" class="menu-btn">Тоглоом</a>
+        <a href="puzzle.html" class="menu-btn">Puzzle</a>
+        
+      </nav>
+      
+      <div class="menu-panel" id="menuPanel">
+        <!-- JS-ээр агуулга нэмэгдэх хэсэг -->
+      </div>
+    </aside>
+    <button class="mini-open-btn" id="miniOpenBtn">⮞</button>
+
+    <!-- Гол хэсэг -->
+    <main class="main-col">
+      <header class="main-header">
+        <h2 id="pageTitle">Үндсэн нүүр</h2>
+      </header>
+
+      <section class="viewer">
+        <div class="viewer-controls">
+          <button id="showAll" class="control-btn primary">Бүгдийг харуулах</button>
+          <button id="toggleDoor" class="control-btn">Хаалга нээх</button>
+        </div>
+        <div id="canvasWrap" class="canvas-wrap"></div>
+        
+      </section>
+
+      <section class="bottom-info" id="bottomInfo">
+        <h3>Товч мэдээлэл</h3>
+        <p id="homeText">
+         <p>Монгол гэр нь нүүдэлчин ахуйн орон байр бөгөөд ёс заншлын чухал хэсэг юм.
+          Үндсэн нүүр талбар дээр 3D загварыг харж болно.</p>
+          <p>
+          "Гэр барих" товч дээр дарахад бүрэлдэхүүн хэсгүүд болон барих дараалал харагдах ба тухайн хэсгийг дарж 3D дээр нэг нэгээр гаргана.</p>
+        </p>
+        <p>Гүйцэтгэсэн оюутнууд: В231880017 Г.Бөртэ-Үжин, В231880020 Б.Сэржмядаг, В231880008 Э.Энхжин</p>
+      </section>
+    </main>
+  </div>
+  
+
+
+
+  <script type="module" src="main_open.js"></script>
+</body>
+</html>

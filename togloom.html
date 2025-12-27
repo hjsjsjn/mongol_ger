@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Гэр барих тоглоом</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="app">
+  
+  <!-- Зүүн талын MENU -->
+  <aside class="left-col">
+    <div class="logo">Монгол гэр</div>
+    <button id="collapseBtn" class="collapse-btn">⮜</button>
+
+    <nav class="menu">
+      <a href="index.html" class="menu-btn">Үндсэн нүүр</a>
+      <a href="gerbarih.html" class="menu-btn">Гэр барих</a>
+      <a href="medeelel.html" class="menu-btn">Мэдээлэл</a>
+      <a href="togloom.html" class="menu-btn active">Тоглоом</a>
+      <a href="puzzle.html" class="menu-btn">Puzzle</a>
+    </nav>
+  </aside>
+  <button class="mini-open-btn" id="miniOpenBtn">⮞</button>
+
+  <!-- Гол хэсэг -->
+  <main class="main-col">
+    <header class="main-header">
+      <h2>Гэр барих — Тоглоом</h2>
+    </header>
+            
+
+        <style>
+        #gameUI {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+        }
+        #gameUI button {
+        padding: 8px 14px;
+        background:#333;
+        color:#fff;
+        border:none;
+        border-radius:6px;
+        cursor:pointer;
+        }
+        #gameUI button:hover {
+        background:#555;
+        }
+        </style>
+
+
+    <section class="viewer-row"
+    style="display:flex; gap:15px; align-items:flex-start; padding:20px;">
+
+    <!-- LEFT: GAME CANVAS -->
+     <section class="viewer">
+    <div style="flex:1; min-width:0;">
+      <div class="viewer-controls">
+          
+          <button id="showAll" class="control-btn primary">Хадгалах</button>
+          <button id="hideAll" class="control-btn">Бүгдийг арилгах</button>
+          <button id="delete" class="control-btn">Устгах</button>
+        </div>
+        <canvas id="gameCanvas"
+            style="width:100%; height:75vh; border-radius:14px; background:#617f96;"></canvas>
+            
+    </div>
+    </section>
+    
+
+    <!-- RIGHT: PART LIST -->
+    <div class="parts-list-panel"
+        style="width:250px; background:#fff; border-radius:14px; padding:12px;
+               flex-shrink:0; overflow-y:auto; max-height:75vh;">
+        <h3>Бүрэлдэхүүн хэсэг</h3>
+        <ul id="componentList"
+            style="list-style:none; margin:0; padding:0;"></ul>
+    </div>
+
+</section>
+
+
+  </main>
+</div>
+
+<script type="module" src="togloom.js"></script>
+</body>
+</html>

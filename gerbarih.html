@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Монгол гэр - Гэр барих</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- Зүүн цэс -->
+    <aside class="left-col">
+      <div class="logo">Монгол гэр</div>
+      <button id="collapseBtn" class="collapse-btn">⮜</button>
+
+      <nav class="menu">
+        <a href="index.html" class="menu-btn">Үндсэн нүүр</a>
+
+        <!-- Гэр барих submenu -->
+        <button id="buildToggle" class="menu-btn active">Гэр барих</button>
+        <div id="buildSubmenu" class="submenu hidden">
+          <button class="sub-btn" data-part="hana">1.Хана</button>
+          <button class="sub-btn" data-part="haalga">2.Хаалга</button>
+          <button class="sub-btn" data-part="toono">3.Тооно</button>
+          <button class="sub-btn" data-part="bagana">4.Багана</button>
+          <button class="sub-btn" data-part="uni">5.Унь</button>
+          <button class="sub-btn" data-part="esgii">6.Эсгий</button>
+          <button class="sub-btn" data-part="burees">7.Цагаан бүрээс</button>
+          <button class="sub-btn" data-part="urh">8.Өрх</button>
+          <button class="sub-btn" data-part="uya">9.Уяа</button>
+          <button class="sub-btn" data-part="shal">10.Шал</button>
+        </div>
+
+        <a href="medeelel.html" class="menu-btn">Мэдээлэл</a>
+        <a href="togloom.html" class="menu-btn">Тоглоом</a>
+        <a href="puzzle.html" class="menu-btn">Puzzle</a>
+      </nav>
+    </aside>
+    <button class="mini-open-btn" id="miniOpenBtn">⮞</button>
+
+    <!-- Гол хэсэг -->
+    <main class="main-col">
+      <header class="main-header">
+        <h2>Гэр барих</h2>
+      </header>
+
+      
+      <section class="viewer">
+        <div class="viewer-controls">
+          <button id="buildStep" class="control-btn">Нэг нэгээр барих</button>
+          <button id="showAll" class="control-btn primary">Бүгдийг харуулах</button>
+          <button id="hideAll" class="control-btn">Бүгдийг арилгах</button>
+        </div>
+        <div id="canvasWrap" class="canvas-wrap"></div>
+        
+      </section>
+
+      <section class="bottom-info">
+        <h3>Барих дараалал</h3>
+        <p>
+          Монгол гэрийн бүрэлдэхүүн хэсгүүдийг дарааллаар харж болно. Зүүн талын дэд товчнууд дээр дарж
+          3D орон зайд гэрийн хэсгүүдийг нэг нэгээр нь угсрах байдлаар үзээрэй.
+        </p>
+        <p>Оюутнууд: В231880017 Г.Бөртэ-Үжин, В231880020 Б.Сэржмядаг, В231880008 Э.Энхжин</p>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="gerbarih.js"></script>
+</body>
+</html>

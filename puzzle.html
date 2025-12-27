@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Монгол гэр Puzzle</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4efe4;
+    }
+
+    .main-layout {
+      display: flex;
+      width: 100%;
+    }
+
+    /* --- Left menu --- */
+    .left-col {
+  margin-top: 70px;
+  width: 250px;
+  min-width: 250px;
+  flex-shrink: 0;
+  transition: all 0.5s ease;
+  position: relative;
+
+  /* ✨ GLASS EFFECT */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+
+  /* ✨ 3D SHADOW */
+  box-shadow:
+      6px 6px 20px rgba(0,0,0,0.18),
+     -6px -6px 20px rgba(255,255,255,0.25);
+
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  
+  overflow: hidden;
+  gap: 12px;
+}
+
+    .logo { 
+      font-weight: 700; 
+      color: #6a4a25; 
+      font-size: 22px;
+    }
+
+    /* === MINI OPEN BUTTON OUTSIDE SIDEBAR === */
+.mini-open-btn {
+  position: fixed;
+  top: 90px;
+  left: 17px;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: #fff3e0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  font-size: 18px;
+  z-index: 9999;
+  display: none;
+
+  transition: all 0.3s ease;
+}
+
+/* collapsed үед л харагдана */
+.left-col.collapsed ~ .mini-open-btn {
+  display: block;
+}
+
+.logo{font-weight:700;color:var(--accent);font-size:18px}
+/* --- Left menu (index.html-тэй ижил болгосон) --- */
+.left-col {
+  margin-top: 40px;
+  width: 260px;
+  min-width: 260px;
+  flex-shrink: 0;
+  padding: 20px;
+  border-radius: 20px;
+
+  background: #f7f2e7;
+  box-shadow: 4px 4px 18px rgba(0,0,0,0.15);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.logo { 
+  font-weight: 700; 
+  color: #6a4a25; 
+  font-size: 22px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.menu-btn {
+  padding: 14px 18px;
+  background: #f5f2eb;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  color: #514747;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.25s ease;
+
+  /* 3D SOFT SHADOWS */
+  box-shadow: 
+     6px 6px 16px rgba(0,0,0,0.2),
+    -6px -6px 16px rgba(255,255,255,0.9);
+}
+
+.menu a {
+  display: block;
+  padding: 14px 18px;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 16px;
+  color: #4a423f;
+  background: #fff;
+  transition: 0.25s;
+
+  box-shadow: 4px 4px 12px rgba(0,0,0,0.15);
+}
+
+.menu a:hover {
+  background: #f0e4d4;
+  transform: translateY(-2px);
+}
+
+.menu a.active {
+  background: #ecdcc6;
+  font-weight: bold;
+}
+
+    /* --- PUZZLE AREA --- */
+    .canvas-wrap {
+      flex: 1;
+      padding: 30px 50px;
+    }
+
+    h1 {
+      color: #4b2e05;
+      font-size: 40px;
+      margin-top: 0;
+    }
+
+    .controls button {
+      width: 200px;
+      padding: 14px;
+      margin-bottom: 12px;
+      font-size: 15px;
+      font-weight: bold;
+      background: #5c3710;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    /* IMAGE SELECTOR */
+    #imageGallery {
+      display: flex;
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .select-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      border: 3px solid #5a3a1a;
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .select-img:hover { transform: scale(1.08); }
+
+    /* PUZZLE GRID */
+    #puzzle {
+      display: grid;
+      gap: 6px;
+      padding: 15px;
+      background: white;
+      width: fit-content;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+
+    .piece {
+      width: 100px;
+      height: 100px;
+      background-size: 300px 300px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 0px;
+      transition: .1s;
+    }
+
+    .piece[selected="true"] {
+      outline: 4px solid red;
+    }
+
+    /* POPUP */
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 35px 45px;
+      border-radius: 16px;
+      text-align: center;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+      animation: popin 0.25s ease;
+    }
+
+    .popup-content h2 {
+      margin: 0 0 15px;
+      font-size: 28px;
+      color: #3d240a;
+    }
+
+    .popup-content button {
+      padding: 10px 25px;
+      background: #5c3710;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    @keyframes popin {
+      from { transform: scale(0.7); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="main-layout">
+
+  <!-- LEFT MENU -->
+  <aside class="left-col">
+    <div class="logo">Монгол гэр</div>
+
+    <nav class="menu">
+      <a href="index.html" class="menu-btn">Үндсэн нүүр</a>
+      <a href="gerbarih.html" class="menu-btn">Гэр барих</a>
+      <a href="medeelel.html" class="menu-btn">Мэдээлэл</a>
+      <a href="togloom.html" class="menu-btn ">Тоглоом</a>
+      <a href="puzzle.html" class="menu-btn active">Puzzle</a>
+    </nav>
+  </aside>
+
+  <!-- PUZZLE AREA -->
+  <div class="canvas-wrap">
+    <h1>Монгол гэр Puzzle</h1>
+
+    <div class="controls">
+      <button id="resetBtn">Шинээр эхлүүлэх</button>
+      <button id="levelBtn">Next Level</button>
+    </div>
+
+    <!-- IMAGE SELECTOR -->
+    <div id="imageGallery">
+      <div class="select-img" data-img="textures/ger.jpg" style="background-image:url('textures/ger.jpg')"></div>
+      <div class="select-img" data-img="textures/huduu.jpg" style="background-image:url('textures/huduu.jpg')"></div>
+      <div class="select-img" data-img="textures/huduu2.jpeg" style="background-image:url('textures/huduu2.jpeg')"></div>
+      <div class="select-img" data-img="textures/ger1.jpeg" style="background-image:url('textures/ger1.jpeg')"></div>
+    </div>
+
+    <!-- PUZZLE GRID -->
+    <div id="puzzle"></div>
+
+    <!-- POPUP -->
+    <div id="popupBox" class="popup">
+      <div class="popup-content">
+        <h2>Баяр хүргэе! 🎉</h2>
+        <button id="closePopup">OK</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let puzzle = document.getElementById("puzzle");
+let size = 3;
+let imgUrl = "textures/ger.jpg";
+let pieces = [];
+let correctOrder = [];
+let firstClick = null;
+
+/* CREATE PUZZLE */
+function createPuzzle() {
+  puzzle.innerHTML = "";
+  pieces = [];
+  correctOrder = [];
+
+  puzzle.style.gridTemplateColumns = `repeat(${size}, 100px)`;
+
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+
+      let d = document.createElement("div");
+      d.className = "piece";
+
+      d.dataset.correct = `${r}-${c}`;
+
+      d.style.backgroundImage = `url(${imgUrl})`;
+      d.style.backgroundSize = `${size * 100}px ${size * 100}px`;
+      d.style.backgroundPosition = `-${c * 100}px -${r * 100}px`;
+
+      pieces.push(d);
+      correctOrder.push(`${r}-${c}`);
+    }
+  }
+}
+
+/* SHUFFLE PIECES */
+function shuffle() {
+  pieces.sort(() => Math.random() - 0.5);
+}
+
+/* DRAW TO SCREEN */
+function render() {
+  puzzle.innerHTML = "";
+  pieces.forEach(p => puzzle.appendChild(p));
+}
+
+/* CHECK SOLVED */
+function checkSolved() {
+  let solved = pieces.every((p, i) => p.dataset.correct === correctOrder[i]);
+  if (solved) {
+    document.getElementById("popupBox").style.display = "flex";
+  }
+}
+
+/* CLOSE POPUP */
+document.getElementById("closePopup").onclick = () => {
+  document.getElementById("popupBox").style.display = "none";
+};
+
+/* CLICK SWAP */
+puzzle.addEventListener("click", e => {
+  if (!e.target.classList.contains("piece")) return;
+
+  if (!firstClick) {
+    firstClick = e.target;
+    firstClick.setAttribute("selected", "true");
+  } else {
+    let a = pieces.indexOf(firstClick);
+    let b = pieces.indexOf(e.target);
+
+    [pieces[a], pieces[b]] = [pieces[b], pieces[a]];
+
+    firstClick.removeAttribute("selected");
+    firstClick = null;
+
+    render();
+    checkSolved();
+  }
+});
+
+/* IMAGE CHANGE */
+document.querySelectorAll(".select-img").forEach(img => {
+  img.onclick = () => {
+    imgUrl = img.dataset.img;
+    loadPuzzle();
+  };
+});
+
+/* LOAD PUZZLE */
+function loadPuzzle() {
+  createPuzzle();
+  shuffle();
+  render();
+  firstClick = null;
+}
+
+/* BUTTONS */
+document.getElementById("resetBtn").onclick = loadPuzzle;
+
+document.getElementById("levelBtn").onclick = () => {
+  size = size === 3 ? 4 : 3;
+  loadPuzzle();
+};
+
+/* START */
+loadPuzzle();
+</script>
+
+</body>
+</html>

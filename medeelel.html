@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Монгол гэр - Мэдээлэл</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    
+    <!-- Зүүн цэс -->
+    <aside class="left-col">
+      <div class="logo">Монгол гэр</div>
+      <button id="collapseBtn" class="collapse-btn">⮜</button>
+
+      <nav class="menu">
+        <a href="index.html" class="menu-btn">Үндсэн нүүр</a>
+        <a href="gerbarih.html" class="menu-btn">Гэр барих</a>
+        <a href="medeelel.html" class="menu-btn active">Мэдээлэл</a>
+        <a href="togloom.html" class="menu-btn">Тоглоом</a>
+        <a href="puzzle.html" class="menu-btn">Puzzle</a>
+      </nav>
+    </aside>
+    <button class="mini-open-btn" id="miniOpenBtn">⮞</button>
+
+    <!-- Гол мэдээлэл -->
+    <main class="main-col">
+
+      <header class="main-header">
+        <h2>Монгол гэрийн тухай мэдээлэл</h2>
+      </header>
+
+      
+      <section class="viewer">
+        <div class="viewer-controls">
+            <button id="showAll" class="control-btn primary">Бүгдийг харуулах</button>
+            <button id="showParts" class="control-btn">Гэрийн бүрэлдэхүүн</button>
+            <button id="explodeGer" class="control-btn">Гэрийн задаргаа</button>
+            <button id="implodeGer" class="control-btn">Буцаах</button>
+
+        </div>
+          <div id="canvasWrap" class="canvas-wrap"></div>
+          
+        </section>
+        <!-- Гэрийн бүрэлдэхүүн GRID -->
+        <section id="partsGrid" class="parts-grid" style="display:none;">
+        </section>
+
+      
+
+        <section class="info-card">
+
+        <!-- Зураг -->
+        <div class="info-banner">
+          <img src="textures/huduu.jpg" alt="Монгол гэр">
+        </div>
+
+        <!-- Текстэн карт -->
+        <div class="info-content">
+
+          <h2>Монгол гэрийн үүсэл</h2>
+          <p>
+            Монгол гэр бол Төв Азийн нүүдэлчдийн уламжлалт гэр сууц юм.
+            Монгол гэр 3000 орчим жилийн тэртээгээс одоогийн ерөнхий хэв шинж нь бүрэлдэн,
+            нүүдэлчин хүний амьдралын гол оромж хэрэгцээ болсоор өнөө цагт иржээ.
+            Нүүж суухад хурдан барьж, буулгадаг, хөнгөн, авсаархан, удаан эдэлгээтэй,
+            агаарын солилцоо сайтай, халуунд сэрүүхэн, хүйтэнд дулаахан онцлогтой.
+          </p>
+
+          <h2>Бүтэц, онцлог</h2>
+          <ul>
+            <li><strong>Хана:</strong> Модон тор хэлбэртэй, гэрийн ханын тулгуур.4–6 ханатай гэж ялгарна (гэрийн хэмжээ).
+                Саглагар моднуудыг сүлжиж хийсэн торон бүтэц.Уг торон ханан дээр эсгий бүрээс ороодог.</li>
+            <li><strong>Багана:</strong> Тооноор дамжих бүх жинг тулдаг гол багана. Ихэвчлэн 2 багана байдаг.Гэрийн дотор талын төв хэсэгт байрлана (голомтын хоёр талд).Гэрийн босоо тогтвортой байдлыг хангана.</li>
+            <li><strong>Тооно:</strong> Гэрийн орой, Утаа гаргах, агааржуулалт болон гэрэл оруулах хэсэг.</li>
+            <li><strong>Хаалга:</strong>Нэг талдаа байрлана (ихэнхдээ урд зүг рүү харуулна).Модон хийцтэй, сийлбэртэй байх нь олон.
+                  Гэрийн хийцэд тогтоолгосон тул гэр нурахгүйгээр онгойдог.</li>
+            <li><strong>Унь:</strong> Тооноос хана руу чиглэсэн олон тооны мод.60–120 ширхэг байна (гэрийн хэмжээнээс хамаарна).Гэрийн дээврийг бүрдүүлж ачааллыг тэнцвэржүүлнэ.</li>
+            <li><strong>Бүрээс:</strong> Эсгий, бүрээс, уяа зэргээр дулаалга хийдэг.</li>
+          </ul>
+
+          <h2>Гэрийн ач холбогдол</h2>
+          <p>
+            Монгол гэр нь зөвхөн сууц биш, харин нүүдэлчний амьдралын хэв маяг,
+            соёл, байгальд ээлтэй орших ухааны бэлгэдэл юм. 
+            Орчин үеийн гэрүүд уламжлалт хэв маягаа хадгалсан ч,
+            шинэ материал технологи ашиглан илүү бат бөх болсон.
+          </p>
+          <section>
+      <h3 class="section">Баруун тал</h3>
+      <div class="info-item">
+        • Эрэгтэй хүний тал
+      </div>
+
+      <div class="info-item">
+        • Зочин байрлуулна
+      </div>
+
+      <div class="info-item">
+        • Хөсөг, эд өлгийн зүйл
+      </div>
+    </section>
+
+    <section>
+      <h3 class="section">Зүүн тал</h3>
+      <div class="info-item">
+          • Эмэгтэй хүний тал
+      </div>
+      <div class="info-item">
+          • Гал тогооны хэрэгсэл, сав суулга
+      </div>
+      
+    </section>
+
+    <section>
+      <h3 class="section">Хийморь</h3>
+      
+      <div class="info-item">
+          • Хүндтэй байр
+      </div>
+      <div class="info-item">
+          • Өвөө эмээ, ахмад хүмүүс сууна
+      </div>
+      <div class="info-item">
+          • Шүтээн, авдар, үнээт зүйлс
+      </div>
+      
+    </section>
+
+    <section>
+      <h3 class="section">Голомт</h3>
+      <div class="info-item">
+          • Гал түлэх төв хэсэг
+      </div>
+      <div class="info-item">
+          • Хоол хийж, гэрийг дулаацуулах гол ажиллагаа
+      </div>
+      <p>Оюутнууд: В231880017 Г.Бөртэ-Үжин, В231880020 Б.Сэржмядаг, В231880008 Э.Энхжин</p>
+      
+    </section>
+
+
+    </main>
+
+  </div>
+
+  <!-- Main JS -->
+  <script type="module" src="medeelel3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+
+</body>
+</html>
