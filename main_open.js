@@ -1,6 +1,6 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js";
-import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js";
+import * as THREE from "./js/three.module.js";
+import { OrbitControls } from "./js/OrbitControls.js";
+import { GLTFLoader } from "./js/GLTFLoader.js";
 
 const container = document.getElementById('canvasWrap');
 const showAllBtn = document.getElementById('showAll');
@@ -208,5 +208,6 @@ function animate() {
 }
 
 animate();
+
 
 
