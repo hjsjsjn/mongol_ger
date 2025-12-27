@@ -78,7 +78,7 @@ const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
 /* ================= LOAD GER (STATIC) ================= */
-loader.load('./models/ger_.glb', gltf => {
+loader.load('./models/ger.glb', gltf => {
   gerModel = gltf.scene;
   scene.add(gerModel);
 });
@@ -208,3 +208,4 @@ function animate() {
 }
 
 animate();
+
